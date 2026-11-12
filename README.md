@@ -105,7 +105,7 @@ Each tool's inputs and outputs: [MCP tools](https://onadit.com/docs/mcp-tools).
 - Asking Onadit for its search key sends a random install ID, with no content, name or email. With that key and a license, the license and the install ID go to the key service about once a day
 - With a license, Onadit sends the license, and nothing else, to onadit.com about once a day to check the subscription. Your answer to "Where did you find Onadit?" is sent once, if you give one
 - When older history could be reorganised, the app asks onadit.com for that offer's price and terms. The request carries nothing about your install or your archive. The offer is not on sale yet
-- Feedback is off by default. If you turn on the feedback relay, your `onadit feedback` notes reach me with a random install ID, versions and optional health information, plus your email once if you choose to share it
+- Feedback is off by default. If you turn on the feedback relay, your `onadit feedback` notes reach me with a random install ID, versions and optional health information, and your email if you shared one. Sharing an email when you turn the relay on also sends it once, with the install ID and versions
 - The app checks `registry.npmjs.org` for a newer version at start and about once an hour. That request carries no content and no ID
 - No usage counters, no analytics, no crash reports
 
