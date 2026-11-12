@@ -15,13 +15,13 @@ This repository holds the signed macOS installer for Onadit (in [Releases](https
 
 - Mac only: Apple silicon and macOS 14 or later. It does not install on Intel Macs
 - Signed with a Developer ID certificate and notarized by Apple. Each release lists the package's SHA-256
-- Free for 7 days, then €5 a month until 31 December 2026 and €9 a month after, excluding VAT. The 7 days start with your first import or captured session after you turn on search by meaning in the app, on the key Onadit pays for. With your own Voyage key there is no clock. After the 7 days, without a license, your archive and keyword search keep working, and capture and search by meaning pause. See [Free week and license](https://onadit.com/docs/license)
+- Free for 7 days, then €5 a month until 31 December 2026 and €9 a month after, excluding VAT. Every install gets the trial, whatever key it uses. The 7 days start the first time one of your agents recalls something from Onadit, or 7 days after you install it if none has. After the trial, without a license, your agents can no longer recall from Onadit; capture keeps saving sessions, and your archive stays on your Mac and searchable in the app. See [Free trial and license](https://onadit.com/docs/license)
 
 ## Install
 
 1. Download `Onadit.pkg` from [onadit.com/download](https://onadit.com/download) or from the latest [release](https://github.com/clementrog/onadit/releases/latest)
 2. Open it. It installs for your user only, with no admin password
-3. Onadit.app opens. Import past chats and connect your agents. Capture of new sessions is off until you turn it on, and needs search by meaning plus Claude Code or Codex signed in
+3. Onadit.app opens. Import past chats and connect your agents. Capture of new sessions is off until you turn it on, and needs Claude Code or Codex installed and signed in. Search by meaning is optional
 
 Full steps: [Install](https://onadit.com/docs/install) and [Quickstart](https://onadit.com/docs/quickstart).
 
@@ -77,7 +77,7 @@ There is no API key in the entry. Other MCP clients that can start a local proce
 
 ## Tools
 
-Onadit's MCP server has 9 tools.
+Onadit's MCP server has 10 tools.
 
 | Tool | What it does |
 |---|---|
@@ -88,6 +88,7 @@ Onadit's MCP server has 9 tools.
 | `onadit_save` | Files a session or a note in the archive |
 | `onadit_log_outcome` | Records which passages a task actually used |
 | `onadit_status` | Shows what Onadit holds and which tool to use for which job |
+| `onadit_source` | Records your answer to the one optional question, "Where did you find Onadit?", once, after the agent asks you |
 | `onadit_why_evidence` | Shows what Onadit recorded about one passage |
 | `onadit_forget_evidence_feedback` | Resets what Onadit recorded about one passage, without deleting the passage |
 
@@ -96,12 +97,14 @@ Each tool's inputs and outputs: [MCP tools](https://onadit.com/docs/mcp-tools).
 ## Privacy
 
 - Your conversations and the search index stay on your Mac. No Onadit account is needed
-- A fresh install uses keyword search and makes no AI calls
+- A fresh install uses keyword search and makes no AI calls until you turn on search by meaning or capture
+- Once at install, Onadit sends a stable code derived from your Mac's hardware ID, with the app version, to check the free trial. It contains no conversation content
 - Search by meaning is off until you turn it on. Then the text Onadit indexes and the searches are sent to Voyage's models to be embedded, with a key Onadit gives you or your own. Turned on in the app, it also sends your existing archive once
 - Capture is off until you turn it on. It sends sessions to Claude Code or Codex, under your own account, to judge and summarise them
-- What an agent retrieves from Onadit enters that agent's chat, and goes to its provider like the rest of the chat
+- What an agent retrieves from Onadit enters that agent's chat, and goes to its provider like the rest of the chat. With the session hooks, which come on when you connect Claude Code or Codex, a short project note also enters each new session
+- With a license, Onadit sends the license, and nothing else, to onadit.com about once a day to check the subscription. Your answer to "Where did you find Onadit?" is sent once, if you give one
 - The app checks `registry.npmjs.org` for a newer version at start and about once an hour. That request carries no content and no ID
-- No telemetry, no analytics, no crash reports
+- No usage counters, no analytics, no crash reports
 
 Every network call, one by one: [What leaves your Mac](https://onadit.com/docs/egress). In plain words: [Privacy](https://onadit.com/docs/privacy).
 
