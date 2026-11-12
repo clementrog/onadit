@@ -102,7 +102,10 @@ Each tool's inputs and outputs: [MCP tools](https://onadit.com/docs/mcp-tools).
 - Search by meaning is off until you turn it on. Then the text Onadit indexes and the searches are sent to Voyage's models to be embedded, with a key Onadit gives you or your own. Turned on in the app, it also sends your existing archive once
 - Capture is off until you turn it on. It sends sessions to Claude Code or Codex, under your own account, to judge and summarise them
 - What an agent retrieves from Onadit enters that agent's chat, and goes to its provider like the rest of the chat. With the session hooks, which come on when you connect Claude Code or Codex, a short project note also enters each new session
+- Asking Onadit for its search key sends a random install ID, with no content, name or email. With that key and a license, the license and the install ID go to the key service about once a day
 - With a license, Onadit sends the license, and nothing else, to onadit.com about once a day to check the subscription. Your answer to "Where did you find Onadit?" is sent once, if you give one
+- When older history could be reorganised, the app asks onadit.com for that offer's price and terms. The request carries nothing about your install or your archive. The offer is not on sale yet
+- Feedback is off by default. If you turn on the feedback relay, your `onadit feedback` notes reach me with a random install ID, versions and optional health information, plus your email once if you choose to share it
 - The app checks `registry.npmjs.org` for a newer version at start and about once an hour. That request carries no content and no ID
 - No usage counters, no analytics, no crash reports
 
